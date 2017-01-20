@@ -1,0 +1,16 @@
+{
+  "name": "Lambda.VFS.Notification",
+  "version": "1.0.0",
+  "description": "Notification Lambda",
+  "main": "index.js",
+  "author": "Dave Carter <dcarter@velma.com>",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.3.7",
+    "async": "^2.0.1",
+    "guid": "0.0.12",
+    "lodash": "^4.17.2",
+    "vfs-extensions": "file:./node/vfs-extensions",
+    "vfs-utils": "file:./node/utils"
+  }
+}

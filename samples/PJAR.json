@@ -1,0 +1,10 @@
+{
+    "environment": {
+        "logLevel": "debug",
+        "debug": true
+    },
+    "body": {
+        "eventType": "printJobApprovalRequested", 
+        "jobId": "VEJOBID"
+    }
+}

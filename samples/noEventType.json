@@ -1,0 +1,9 @@
+{
+    "environment": {
+        "logLevel": "debug",
+        "debug": true
+    },
+    "body": {
+        "eventTyp": "printJobApproved"
+    }
+}
