@@ -2,7 +2,7 @@
 
 const util = require('util');
 const vfsUtil = require('vfs-utils');
-const Request = require('./request.js');
+const Request = require('./Request.js');
 
 var Service = function(environment, logger, dbClient) {
     vfsUtil.service.ServiceBase.call(this);
@@ -28,12 +28,14 @@ Service.prototype._process = function(req) {
     // Lookup the module and execute its funciton.
     if (this._validate()) {
 
-        this.log.infoPublic("Sending " + req.eventType + " to Notification Service");
+        this.log.infoPublic("Sending " + req.eventType + " to Notifiction Service");
 
         /* 
          * Push Event to notification service 
          */ 
 
+         
+         
 
 
 
@@ -47,13 +49,7 @@ Service.prototype._process = function(req) {
 
 
 
-
-
-
-
-
-
-        this.complete("Event Sent to Notification Service");
+        this.complete();
     } else 
         this.abort("Event Failed Validation");
     

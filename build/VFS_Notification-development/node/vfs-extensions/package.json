@@ -1,0 +1,11 @@
+{
+  "name": "vfs-extensions",
+  "version": "1.0.0",
+  "description": "Addes utilities to builtin types",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ian Laird <ilaird@velma.com>",
+  "license": "ISC"
+}

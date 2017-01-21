@@ -4,7 +4,7 @@
         "debug": true
     },
     "body": {
-        "eventType": "PrintJobDeclined", 
+        "eventType": "printJobDeclined", 
         "jobId": "VEJOBID"
     }
 }

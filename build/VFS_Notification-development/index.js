@@ -27,54 +27,20 @@ const eventTypeMap = [
 
 exports.handler = function (event, context, callback) {
 
-    /* Message Structure 
-     {
-      "Records":[
-        {
-          "EventSource":"aws:sns",
-          "EventVersion": "1.0",
-          "EventSubscriptionArn": "arn:aws:sns:us-east-1:123456789012:lambda_topic:0b6941c3-f04d-4d3e-a66d-b1df00e1e381",
-          "Sns":{
-            "Type": "Notification",
-            "MessageId":"95df01b4-ee98-5cb9-9903-4c221d41eb5e",
-            "TopicArn":"arn:aws:sns:us-east-1:123456789012:lambda_topic",
-            "Subject":"TestInvoke",
-            "Message":"<message payload>",
-            "Timestamp":"2015-04-02T07:36:57.451Z",
-            "SignatureVersion":"1",
-            "Signature":"r0Dc5YVHuAglGcmZ9Q7SpFb2PuRDFmJNprJlAEEk8CzSq9Btu8U7dxOu++uU",
-            "SigningCertUrl":"http://sns.us-east-1.amazonaws.com/SimpleNotificationService-d6d679a1d18e95c2f9ffcf11f4f9e198.pem",
-            "UnsubscribeUrl":"http://cloudcast.amazon.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:123456789012:example_topic:0b6941c3-f04d-4d3e-a66d-b1df00e1e381",
-            "MessageAttributes":{"key":{"Type":"String","Value":"value"}}
-          }
-        }
-      ]
-    }
-    */
-
-    console.log("*********** LOG EVENT ************");
-    
-    // Looking for a valid SNS Record
-
-    if (event.Records[0].Sns) {
-
-        console.log("Valid SNS Record");   
-        
-        //console.log(JSON.parse(event.Records[0].Sns));
-
-        event.body = event.Records[0].Sns.Message;
-
-    } else {
-
-        // Error
-
-
-    }
-    
-    console.log(event.body);
-
     var env = new vfsUtil.LambdaVariables(event, {});
-    console.log(env);
+
+    if (!env.isValid) {
+
+        /*
+         * The environment must be valid for us to continue. If you get a 503
+         * from this function, it is because your Request Integration Model is
+         * not providing the environment needed to execute.
+         */
+
+        console.log("Environment is not valid: %s".format(env.errorMessage));
+        callback(errorMessage.format(503, "The service might be in maintenance mode. Please try again later."));
+        return;
+    }
 
     var logger = env.createLogger(context);
 
