@@ -51,8 +51,6 @@ Service.prototype._process = function(req) {
 
 
 
-
-
         this.complete("Event Sent to Notification Service");
     } else 
         this.abort("Event Failed Validation");

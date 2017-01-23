@@ -59,30 +59,30 @@ exports.handler = function (event, context, callback) {
     if (event.Records[0].Sns) {
 
         console.log("Valid SNS Record");   
-        
-        //console.log(JSON.parse(event.Records[0].Sns));
 
-        event.body = event.Records[0].Sns.Message;
+        // Extract Event Body from the SNS Message
+        event.body = JSON.parse(event.Records[0].Sns.Message);
 
     } else {
 
         // Error
-
-
+        console.log("Bad SNS Message");
+        console.log(event);
+        return;
     }
     
-    console.log(event.body);
+    // console.log("** event.body **");
+    // console.log(event.body);
+    // console.log(event.body.eventType);
 
     var env = new vfsUtil.LambdaVariables(event, {});
-    console.log(env);
-
     var logger = env.createLogger(context);
 
     /* 
      * Check to see if the nofitification event is accepted. 
      */
 
-    logger.infoPublic("EventType : " + event.body.eventType);
+    logger.infoPublic("*** EventType : " + event.body.eventType);
  
     if (lodash.indexOf(eventTypeMap, event.body.eventType) == -1) {
         console.log("Event Not Accepted: Dropping: %s".format("'" + event.body.eventType + "'"));

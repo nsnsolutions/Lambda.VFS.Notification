@@ -1,10 +1,26 @@
-{
-    "environment": {
-        "logLevel": "debug",
-        "debug": true
-    },
-    "body": {
-        "eventType": "PrintJobDeclined", 
-        "jobId": "VEJOBID"
-    }
+{ 
+	"Records": [ 
+		{ 
+			"EventSource": "aws:sns",
+			"EventVersion": "1.0",
+			"EventSubscriptionArn": "arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback:c08538f3-26f6-452b-90d7-1ca96594e96c",
+			"Sns": { 
+					"Type": "Notification",
+					"MessageId": "9372ee21-fb3d-5bec-bfc7-bedd550f93da",
+					"TopicArn": "arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback",
+					"Subject": "NotificationTest",	
+					"Message": 
+					{
+						"eventType": "PrintJobApproved",
+						"jobId":"VEMYJOBID"
+					},
+					"Timestamp": "2017-01-21T00:31:46.680Z",
+					"SignatureVersion": "1",
+					"Signature": "D2LC5aHdkFZD",
+					"SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+					"UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback:c08538f3-26f6-452b-90d7-1ca96594e96c",
+					"MessageAttributes": {} 
+			}
+		} 
+	] 
 }

@@ -1,9 +1,0 @@
-{
-    "environment": {
-        "logLevel": "debug",
-        "debug": true
-    },
-    "body": {
-        "stuff": "yes, this is stuff"
-    }
-}
