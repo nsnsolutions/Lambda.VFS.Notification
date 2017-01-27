@@ -25,7 +25,12 @@ const eventTypeMap = [
     "PrintJobApprovalRequested"
 ];
 
+
 exports.handler = function (event, context, callback) {
+
+    // console.log("ENV");
+    // console.log(process.env);
+
 
     /* Message Structure 
      {
@@ -52,29 +57,27 @@ exports.handler = function (event, context, callback) {
     }
     */
 
-    console.log("*********** LOG EVENT ************");
+    console.log("SNS Event");
+    console.log(event);
     
     // Looking for a valid SNS Record
-
     if (event.Records[0].Sns) {
-
-        console.log("Valid SNS Record");   
 
         // Extract Event Body from the SNS Message
         event.body = JSON.parse(event.Records[0].Sns.Message);
 
-    } else {
+        // Determine the dev, test , prod via event subscription arm
+        event.body.eventArn = event.Records[0].EventSubscriptionArn;
+        event.body.develRpcUri =  process.env.develRpcUri||"devel.rpc.velma.com";
+        event.body.testRpcUri =  process.env.testRpcUri||"test.rpc.velma.com";
+        event.body.rpcUri =  process.env.rpcUri||"local";
 
+    } else {
         // Error
-        console.log("Bad SNS Message");
-        console.log(event);
+        console.log("Bad SNS Message: Dropping");
         return;
     }
     
-    // console.log("** event.body **");
-    // console.log(event.body);
-    // console.log(event.body.eventType);
-
     var env = new vfsUtil.LambdaVariables(event, {});
     var logger = env.createLogger(context);
 
@@ -82,10 +85,10 @@ exports.handler = function (event, context, callback) {
      * Check to see if the nofitification event is accepted. 
      */
 
-    logger.infoPublic("*** EventType : " + event.body.eventType);
- 
-    if (lodash.indexOf(eventTypeMap, event.body.eventType) == -1) {
-        console.log("Event Not Accepted: Dropping: %s".format("'" + event.body.eventType + "'"));
+    logger.infoPublic("*** EventType : " + event.body.type);
+
+    if (lodash.indexOf(eventTypeMap, event.body.type) == -1) {
+        console.log("Event Not Accepted: Dropping: %s".format("'" + event.body.type + "'"));
         return;
     }
 
@@ -128,3 +131,5 @@ exports.handler = function (event, context, callback) {
 
     impl.process(event.body);
 };
+
+

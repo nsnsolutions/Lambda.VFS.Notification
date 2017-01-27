@@ -2,25 +2,21 @@
 	"Records": [ 
 		{ 
 			"EventSource": "aws:sns",
-			"EventVersion": "1.0",
-			"EventSubscriptionArn": "arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback:c08538f3-26f6-452b-90d7-1ca96594e96c",
-			"Sns": { 
-					"Type": "Notification",
-					"MessageId": "9372ee21-fb3d-5bec-bfc7-bedd550f93da",
-					"TopicArn": "arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback",
-					"Subject": "NotificationTest",	
-					"Message": 
-					{
-						"eventType": "PrintJobApproved",
-						"jobId":"VEMYJOBID"
-					},
-					"Timestamp": "2017-01-21T00:31:46.680Z",
-					"SignatureVersion": "1",
-					"Signature": "D2LC5aHdkFZD",
-					"SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
-					"UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback:c08538f3-26f6-452b-90d7-1ca96594e96c",
-					"MessageAttributes": {} 
-			}
+		    "EventVersion": "1.0",
+		    "EventSubscriptionArn": "arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback:c08538f3-26f6-452b-90d7-1ca96594e96c",
+		    "Sns": {
+		        "Type": "Notification",
+		        "MessageId": "73155292-4385-5a63-8d00-0390ab68c478",
+		        "TopicArn": "arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback",
+		        "Subject": "NotificationTest",
+		        "Message" : "{\"event_id\":\"b9c58b8dbb424476b6f27f1d10bbc07c\",\"message_id\":\"b9c58b8dbb424476b6f27f1d10bbc07c\",\"type\":\"PrintJobDeclined\",\"job_id\":\"VI20170126208549abb4b27\",\"timestamp\":1485301719,\"details\":{\"comments\":\"We declined this one\"},\"person\":{\"sponsorId\":\"1139f95f01294e63a3a5a00e66a52c05\",\"sponsorName\":\"Velma\",\"sponsorKey\":\"f9340b76652e4164b73152d597883685\",\"clientId\":\"dcdbeb54edfb4487bea2e042a194d0ab\",\"clientName\":\"VFSMockClient\",\"clientKey\":\"68efbdb8b7684ab8b64316eeb334ef48\",\"userId\":\"ilaird-default\",\"email\":\"ilaird@velma.com\",\"fullName\":\"Ian R Laird\",\"photoUrl\":\"https://s3-us-west-2.amazonaws.com/vfs-assets/user/ilaird/ian.jpeg\",\"address\":{},\"roles\":[\"Developer\",\"JOB:30\"]}}",
+		        "Timestamp": "2017-01-25T17:55:57.185Z",
+		        "SignatureVersion": "1",
+		        "Signature": "XCp1zPS446JImjND0sZpperPrt/vl9K4TWB/p6JEsBO2gPmAH24b4uYyt5X3JFLLXHCI/8c/4qASg6kyQTUlgbEKnbRITIU0LmQ1aUQsmd2Q1TyIE2Ij1lwipQCqtfbgubx7MIk3yMwOqr3qdKwYoajc4d/Gqiuh7tqG/yg1DJEBRd3xJy/AAzTAbiDB3o0c4NdLMhfYIVyeQdHYwBDHpLR7G4ci6XNLgsFHX69hVUXQzzHNIRD9bass2P+X56ylHdbqjciinRXl94rXKgMOMzjCL+d9eUjUqkXFLcwtmaC00h+FhUEWKIOfvvko7VN3BnNHf8H86eiYEphJ90xohg==",
+		        "SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+		        "UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback:c08538f3-26f6-452b-90d7-1ca96594e96c",
+		        "MessageAttributes": {}
+		    }
 		} 
 	] 
 }
