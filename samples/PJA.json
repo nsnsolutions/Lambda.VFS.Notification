@@ -9,11 +9,7 @@
 					"MessageId": "9372ee21-fb3d-5bec-bfc7-bedd550f93da",
 					"TopicArn": "arn:aws:sns:us-west-2:851940729109:devel_vfs_event_callback",
 					"Subject": "NotificationTest",	
-					"Message": 
-					{
-						"eventType": "PrintJobApproved",
-						"jobId":"VEMYJOBID"
-					},
+					"Message" : "{\"event_id\":\"b9c58b8dbb424476b6f27f1d10bbc07c\",\"message_id\":\"b9c58b8dbb424476b6f27f1d10bbc07c\",\"type\":\"PrintJobApproved\",\"job_id\":\"VI20170126208549abb4b27\",\"timestamp\":1485301719,\"details\":{\"comments\":\"We approved this one\"},\"person\":{\"sponsorId\":\"1139f95f01294e63a3a5a00e66a52c05\",\"sponsorName\":\"Velma\",\"sponsorKey\":\"f9340b76652e4164b73152d597883685\",\"clientId\":\"dcdbeb54edfb4487bea2e042a194d0ab\",\"clientName\":\"VFSMockClient\",\"clientKey\":\"68efbdb8b7684ab8b64316eeb334ef48\",\"userId\":\"ilaird-default\",\"email\":\"ilaird@velma.com\",\"fullName\":\"Ian R Laird\",\"photoUrl\":\"https://s3-us-west-2.amazonaws.com/vfs-assets/user/ilaird/ian.jpeg\",\"address\":{},\"roles\":[\"Developer\",\"JOB:30\"]}}",
 					"Timestamp": "2017-01-21T00:31:46.680Z",
 					"SignatureVersion": "1",
 					"Signature": "D2LC5aHdkFZD",
