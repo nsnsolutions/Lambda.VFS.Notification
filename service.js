@@ -111,6 +111,7 @@ Service.prototype._buildNotificationEventReq  = function(req) {
         eventType: req.type,
         eventId: req.event_id,
         jobId: req.job_id, 
+        timestamp: req.timestamp,
         person: req.person,
         details: req.details, 
         rpcUri: this._rpcUri(req),
