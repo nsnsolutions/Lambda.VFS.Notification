@@ -35,35 +35,35 @@ Service.prototype._process = function(req) {
         console.log("Logging Request: ");
         console.log(req);
 
-        if (this._isDev(req)) { //.rpcUri != 'local') {
+        // if (this._isDev(req)) { //.rpcUri != 'local') {
 
-            //https://devel.rpc.velma.com/amqp/exec/notificationServicetokenService/tokenize 
-            this.log.infoPublic("Local Dev Testing");
+        //     //https://devel.rpc.velma.com/amqp/exec/notificationServicetokenService/tokenize 
+        //     this.log.infoPublic("Local Dev Testing");
 
-            var baseUrl = "http://localhost:10101/act?role=notificationService.Pub&cmd=notification.v1";
-            var url = baseUrl + "&cp=" + encodeURI(JSON.stringify(this._buildNotificationEventReq(req)));
-            this.log.infoPublic("Post to: " + url);
-            this._postWithGet(url).then(
-                function(data) {
-                    this.complete("Event Sent to Notification Service");
-                }, function (error) {
-                    this.complete("Error to Notification Service");
-                });
+        //     var baseUrl = "http://localhost:10101/act?role=notificationService.Pub&cmd=notification.v1";
+        //     var url = baseUrl + "&cp=" + encodeURI(JSON.stringify(this._buildNotificationEventReq(req)));
+        //     this.log.infoPublic("Post to: " + url);
+        //     this._postWithGet(url).then(
+        //         function(data) {
+        //             this.complete("Event Sent to Notification Service");
+        //         }, function (error) {
+        //             this.complete("Error to Notification Service");
+        //         });
            
-        } else {
+        // } else {
 
-            this.log.infoPublic("Processing Request");
+        this.log.infoPublic("Processing Request");
 
-            var url = "https://" + this._rpcUri(req) + "/amqp/exec/notificationService/notification";
-            this.log.infoPublic("Post to: " + url);
-            this._post(url, this._buildNotificationEventReq(req)).then(
-                function(data) {
-                    this.complete("Event Sent to Notification Service");
-                }, function (error) {
-                    this.complete("Error to Notification Service");
-                });
+        var url = "https://" + this._rpcUri(req) + "/amqp/exec/notificationService/notification";
+        this.log.infoPublic("Post to: " + url);
+        this._post(url, this._buildNotificationEventReq(req)).then(
+            function(data) {
+                this.complete("Event Sent to Notification Service");
+            }, function (error) {
+                this.complete("Error to Notification Service");
+            });
 
-        } 
+//        } 
 
         
     } else 
@@ -107,8 +107,9 @@ Service.prototype._buildNotificationEventReq  = function(req) {
     "vfsStack": "v1 or test or dev"
 */       
 
-    var ner = {
+    var ner = { 
         eventType: req.type,
+        eventId: req.event_id,
         jobId: req.job_id, 
         person: req.person,
         details: req.details, 

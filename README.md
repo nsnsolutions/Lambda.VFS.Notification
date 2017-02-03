@@ -7,4 +7,4 @@ VFS Notification Lambda -- Subscribes to the event service to grab Notification 
 
 # To Deploy
 
-	node-lambda deploy -e 
+	node-lambda deploy 

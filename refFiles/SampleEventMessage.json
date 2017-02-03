@@ -1,0 +1,36 @@
+{
+  "Type" : "Notification",
+  "MessageId" : "19e5b914-018c-5a6a-83d3-e81075946196",
+  "TopicArn" : "arn:aws:sns:us-west-2:851940729109:il-sandbox-SNSCallbacks-XS87C7OTJCZR",
+  "Message" : "{\"event_id\":\"b9c58b8dbb424476b6f27f1d10bbc07c\",\"message_id\":\"b9c58b8dbb424476b6f27f1d10bbc07c\",\"type\":\"PrintJobDeclined\",\"job_id\":\"VI20170124233254c57097d8\",\"timestamp\":1485301719,\"details\":{\"comments\":\"We declined this one\"},\"person\":{\"sponsorId\":\"1139f95f01294e63a3a5a00e66a52c05\",\"sponsorName\":\"Velma\",\"sponsorKey\":\"f9340b76652e4164b73152d597883685\",\"clientId\":\"dcdbeb54edfb4487bea2e042a194d0ab\",\"clientName\":\"VFSMockClient\",\"clientKey\":\"68efbdb8b7684ab8b64316eeb334ef48\",\"userId\":\"ilaird-default\",\"email\":\"ilaird@velma.com\",\"fullName\":\"Ian R Laird\",\"photoUrl\":\"https://s3-us-west-2.amazonaws.com/vfs-assets/user/ilaird/ian.jpeg\",\"address\":{},\"roles\":[\"Developer\",\"JOB:30\"]}}",
+  "Timestamp" : "2017-01-26T22:02:00.975Z",
+  "SignatureVersion" : "1",
+  "Signature" : "S84yb0ddLB9/W16SLNLBEPXMdj4RKQ/zhGZNje4VmlS9PsGUCoOi4zG4hLYvg9qVezJHDreh3/12SLfPmbGOJkxH2hyV4KtvpDz59r0qah48uog88sKZDpv8KDexBNq0MQOv8qm9LWGi9mSjqwGEDpPJGnv0+AM/BpH956Y0z/lOnrCBDx2UnfsFw9M3bOLwnJ8C0Lji13O/38uYovkiUWJLEof3MjW+P+8RMwqtKmynWVl4aLZ1cF3r4GVNVy/CHjfVR2vEtw25DrsoMSAuuqmsxi00PUdxPhnXjI03V3dk34On2HItoMD1PPcCH0yCoi5/y3iMZ16abIapBU2r6Q==",
+  "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+  "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:851940729109:il-sandbox-SNSCallbacks-XS87C7OTJCZR:02f0c3c0-ee3c-4a82-acb2-d34ee0572ea8"
+}
+
+{
+  "event_id":"b9c58b8dbb424476b6f27f1d10bbc07c",
+  "message_id":"b9c58b8dbb424476b6f27f1d10bbc07c",
+  "type":"PrintJobDeclined",
+  "job_id":"VI20170124233254c57097d8",
+  "timestamp":1485301719,
+  "details":{
+    "comments":"We declined this one"
+  },
+  "person":{
+      "sponsorId":"1139f95f01294e63a3a5a00e66a52c05",
+      "sponsorName":"Velma",
+      "sponsorKey":"f9340b76652e4164b73152d597883685",
+      "clientId":"dcdbeb54edfb4487bea2e042a194d0ab",
+      "clientName":"VFSMockClient",
+      "clientKey":"68efbdb8b7684ab8b64316eeb334ef48",
+      "userId":"ilaird-default",
+      "email":"ilaird@velma.com",
+      "fullName":"Ian R Laird",
+      "photoUrl":"https://s3-us-west-2.amazonaws.com/vfs-assets/user/ilaird/ian.jpeg",
+      "address":{},
+      "roles":["Developer","JOB:30"]
+  }
+}

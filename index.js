@@ -25,12 +25,7 @@ const eventTypeMap = [
     "PrintJobApprovalRequested"
 ];
 
-
 exports.handler = function (event, context, callback) {
-
-    // console.log("ENV");
-    // console.log(process.env);
-
 
     /* Message Structure 
      {
@@ -65,12 +60,14 @@ exports.handler = function (event, context, callback) {
 
         // Extract Event Body from the SNS Message
         event.body = JSON.parse(event.Records[0].Sns.Message);
+        console.log("Event Body");
+        console.log(event.body);
 
         // Determine the dev, test , prod via event subscription arm
         event.body.eventArn = event.Records[0].EventSubscriptionArn;
         event.body.develRpcUri =  process.env.develRpcUri||"devel.rpc.velma.com";
         event.body.testRpcUri =  process.env.testRpcUri||"test.rpc.velma.com";
-        event.body.rpcUri =  process.env.rpcUri||"local";
+        event.body.rpcUri =  process.env.rpcUri || "rpc.velma.com";
 
     } else {
         // Error

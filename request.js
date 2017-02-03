@@ -9,6 +9,8 @@ var Request = function(body) {
         "type": [ "type", String, true ],
         "job_id": ["job_id", String, true],
         "details": ["details", Object, true],
+        "event_id": ["event_id", String, true],
+        "timestamp": ["timestamp", Number, true],
 
         // Person Object Validation 
         "person": ["person", Object, true],
@@ -20,7 +22,6 @@ var Request = function(body) {
         "userId": ["person.userId", String, true], // Could user for appid
         "email": ["person.email", String, true], 
         "fullName": ["person.fullName", String, true], 
-        "photoUrl": ["person.photoUrl", String, true], 
         "address": ["person.address", Object, true], 
         "roles": ["person.roles", Object, true], 
 
