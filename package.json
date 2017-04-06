@@ -1,18 +1,21 @@
 {
-  "name": "VFS_Notification",
+  "name": "VFS_Scripts",
   "version": "1.0.0",
-  "description": "Notification Lambda",
+  "description": "Scripts",
   "main": "index.js",
   "author": "Dave Carter <dcarter@velma.com>",
   "license": "ISC",
   "dependencies": {
     "async": "^2.0.1",
     "aws-sdk": "^2.3.7",
+    "bluebird": "^3.4.7",
     "guid": "0.0.12",
-    "lodash": "^4.17.2",
+    "httpreq": "^0.4.22",
+    "lodash": "^4.17.4",
     "node-rest-client": "^2.0.1",
     "q": "^1.4.1",
     "vfs-extensions": "file:./node/vfs-extensions",
-    "vfs-utils": "file:./node/utils"
+    "vfs-utils": "file:./node/utils",
+    "vfs-aws": "file:./node/AWS"
   }
 }

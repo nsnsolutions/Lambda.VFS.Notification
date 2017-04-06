@@ -1,7 +1,0 @@
-{
-    "environment": {
-        "logLevel": "debug",
-        "debug": true
-    },
-    "body": {"eventType":"PrintJobApprovalRequested","jobId":"VEMYJOBID_1"}
-}

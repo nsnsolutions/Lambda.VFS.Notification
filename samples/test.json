@@ -1,9 +1,19 @@
 {
     "environment": {
         "logLevel": "debug",
-        "debug": true
+        "debug": true, 
+        "tables": {
+        	"vfs_job_table": "VFS_Job" 
+        }, 
+        "queues": {
+        	"emailQueue": "https://sqs.us-west-2.amazonaws.com/851940729109/VFS_TEST"
+        }
     },
-    "body": {
-        "stuff": "yes, this is stuff"
+ 	"body": {
+        "action": "resend",
+        "type": "email",
+        "dateRange": "2017-01-01T00:00:00;2017-02-10T23:59:59",
+        "status": "Failed", 
+        "sponsorId": "90c40118b9844ce79c5e5a2b5f77cd78"
     }
 }

@@ -1,0 +1,16 @@
+{
+    "environment": {
+        "logLevel": "debug",
+        "debug": true
+    },
+ 	"body": {
+        "module": "stages",
+        "method": "createApiStage",
+        "params": {
+            "sourceApi": "VFS_DC",
+            "sourceStage": "test", 
+            "createStage": "beta"
+        }
+        
+    }
+}

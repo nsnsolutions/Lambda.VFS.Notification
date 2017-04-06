@@ -1,0 +1,17 @@
+{
+    "environment": {
+        "logLevel": "debug",
+        "debug": true, 
+        "tables": {
+            "vfs_job_table": "DEVEL_VFS_Job" 
+        }
+    },
+ 	"body": {
+        "module": "jobAsset",
+        "method": "requeueJob",
+        "params": {
+            "jobId": "VE2017020222916468ff329", 
+            "queue": "https://sqs.us-west-2.amazonaws.com/851940729109/devel-QEProcess-1OKOYZFROB8DF"
+        }
+    }
+}

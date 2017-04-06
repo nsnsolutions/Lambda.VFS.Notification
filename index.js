@@ -4,8 +4,9 @@ require('vfs-extensions');
 
 const vfsUtil = require('vfs-utils');
 const Service = require('./service.js');
-const aws = require('aws-sdk');
+//const aws = require('aws-sdk');
 const lodash = require('lodash');
+const AWS = require('aws-sdk');
 
 const errorMessage = {
     400: "Bad Request: %s",
@@ -19,81 +20,20 @@ const errorMessage = {
     }
 };
 
-const eventTypeMap = [
-    "PrintJobApproved", 
-    "PrintJobDeclined", 
-    "PrintJobApprovalRequested"
-];
-
 exports.handler = function (event, context, callback) {
 
-    /* Message Structure 
-     {
-      "Records":[
-        {
-          "EventSource":"aws:sns",
-          "EventVersion": "1.0",
-          "EventSubscriptionArn": "arn:aws:sns:us-east-1:123456789012:lambda_topic:0b6941c3-f04d-4d3e-a66d-b1df00e1e381",
-          "Sns":{
-            "Type": "Notification",
-            "MessageId":"95df01b4-ee98-5cb9-9903-4c221d41eb5e",
-            "TopicArn":"arn:aws:sns:us-east-1:123456789012:lambda_topic",
-            "Subject":"TestInvoke",
-            "Message":"<message payload>",
-            "Timestamp":"2015-04-02T07:36:57.451Z",
-            "SignatureVersion":"1",
-            "Signature":"r0Dc5YVHuAglGcmZ9Q7SpFb2PuRDFmJNprJlAEEk8CzSq9Btu8U7dxOu++uU",
-            "SigningCertUrl":"http://sns.us-east-1.amazonaws.com/SimpleNotificationService-d6d679a1d18e95c2f9ffcf11f4f9e198.pem",
-            "UnsubscribeUrl":"http://cloudcast.amazon.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:123456789012:example_topic:0b6941c3-f04d-4d3e-a66d-b1df00e1e381",
-            "MessageAttributes":{"key":{"Type":"String","Value":"value"}}
-          }
-        }
-      ]
-    }
-    */
+    // console.log("Event.body");
+    // console.log(event.body);
 
-    console.log("SNS Event");
-    console.log(event);
-    
-    // Looking for a valid SNS Record
-    if (event.Records[0].Sns) {
-
-        // Extract Event Body from the SNS Message
-        event.body = JSON.parse(event.Records[0].Sns.Message);
-        console.log("Event Body");
-        console.log(event.body);
-
-        // Determine the dev, test , prod via event subscription arm
-        event.body.eventArn = event.Records[0].EventSubscriptionArn;
-        event.body.develRpcUri =  process.env.develRpcUri||"devel.rpc.velma.com";
-        event.body.testRpcUri =  process.env.testRpcUri||"test.rpc.velma.com";
-        event.body.rpcUri =  process.env.rpcUri || "rpc.velma.com";
-
-    } else {
-        // Error
-        console.log("Bad SNS Message: Dropping");
-        return;
-    }
-    
     var env = new vfsUtil.LambdaVariables(event, {});
     var logger = env.createLogger(context);
-
-    /* 
-     * Check to see if the nofitification event is accepted. 
-     */
-
-    logger.infoPublic("*** EventType : " + event.body.type);
-
-    if (lodash.indexOf(eventTypeMap, event.body.type) == -1) {
-        console.log("Event Not Accepted: Dropping: %s".format("'" + event.body.type + "'"));
-        return;
-    }
 
     /*
      * Process Event Body in Service
      */
     
-    var impl = new Service(env, logger);
+    var ddbClient = new AWS.DynamoDB.DocumentClient({region: env.region});
+    var impl = new Service(env, logger, ddbClient);
 
     /*
      * impl will emit codes on completion.
